@@ -1,0 +1,25 @@
+{
+  "name": "eacty",
+  "version": "1.0.0",
+  "description": "tiny typescript react module for applying MVVM",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MVVM",
+    "Reactjs",
+    "Reacty"
+  ],
+  "author": "Rayed Ali",
+  "license": "MIT",
+  "peerDependencies": {
+    "meta-data": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
