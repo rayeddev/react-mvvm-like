@@ -1,6 +1,6 @@
 {
   "name": "react-mvvm-like",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tiny typescript react module for applying MVVM",
   "main": "dist/index.js",
   "scripts": {
