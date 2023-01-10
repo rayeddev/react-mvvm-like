@@ -1,25 +1,31 @@
 {
-  "name": "eacty",
+  "name": "react-mvvm-like",
   "version": "1.0.0",
   "description": "tiny typescript react module for applying MVVM",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rayeddev/react-mvvm-like"
   },
   "keywords": [
     "MVVM",
     "Reactjs",
-    "Reacty"
+    "react-mvvm-like"
   ],
   "author": "Rayed Ali",
   "license": "MIT",
   "peerDependencies": {
-    "meta-data": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "uuid": "^9.0.0"
+    "react-dom": "^18.2.0"  
   },
   "devDependencies": {
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "meta-data": "^1.0.0",
+    "uuid": "^9.0.0"
   }
 }
