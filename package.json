@@ -1,8 +1,8 @@
 {
   "name": "react-mvvm-like",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "tiny typescript react module for applying MVVM",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
