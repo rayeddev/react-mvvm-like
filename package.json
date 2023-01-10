@@ -19,13 +19,14 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"  
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "meta-data": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
     "uuid": "^9.0.0"
   }
 }
