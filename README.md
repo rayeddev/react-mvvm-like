@@ -1,5 +1,5 @@
 # react-mvvm-like
-support applying MVVM on reactjs inspired by SwiftUI
+support applying MVVM using reactjs inspired by SwiftUI
 
 ## Example
 ### Model
