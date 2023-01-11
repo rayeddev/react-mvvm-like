@@ -39,7 +39,7 @@ class TodoManager extends ObservableObject {
 ```
 
 ### View use hook (useObservedObject) to receive ViewModel changes and trigger render
-```ts
+```tsx
 const viewModel = new TodoManager();
 
 export default function App() {
