@@ -1,5 +1,5 @@
 # react-mvvm-like
-tiny typescript module to support applying MVVM on reactjs inspired by SwiftUI
+support applying MVVM on reactjs inspired by SwiftUI
 
 ## Example
 ### Model
