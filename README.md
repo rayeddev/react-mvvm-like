@@ -1,6 +1,22 @@
 # react-mvvm-like
 support applying MVVM using reactjs inspired by SwiftUI
 
+## Install 
+```bash
+npm install react-mvvm-like
+```
+
+## .tsconfig
+```
+"compilerOptions": {
+  ...
+  "experimentalDecorators": true, // 👈️ must be enabled
+  ...
+}
+```
+
+____
+
 ## Example
 ### Model
 ```ts
