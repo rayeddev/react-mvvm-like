@@ -19,8 +19,7 @@ export class ObservableObject {
       let instance: { [publishedKey: string]: any } = this as {};
       if (instance[publishedKey] !== undefined) {
         (instance[publishedKey] as onPropChangedHook)((key) => {
-          let currentValue = instance[key];
-          console.log({ key }, this.observeribtyCallback);
+          let currentValue = instance[key];          
           if (this.observeribtyCallback !== undefined) {
             Reflect.defineProperty(this, key, {
               set(next) {
@@ -43,8 +42,7 @@ export function useObservedObject<T extends ObservableObject>(m: T): T {
   const [___s, set___s] = useState("");
 
   useEffect(() => {
-    if (m.observeribtyCallback === undefined) {
-      console.log("is comming herere");
+    if (m.observeribtyCallback === undefined) {      
       m.observeribtyCallback = (key: string, prev: any, next: any) => {
         set___s(uuidv4());
       };
