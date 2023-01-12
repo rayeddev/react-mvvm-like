@@ -21,7 +21,6 @@ class ObservableObject {
             if (instance[publishedKey] !== undefined) {
                 instance[publishedKey]((key) => {
                     let currentValue = instance[key];
-                    console.log({ key }, this.observeribtyCallback);
                     if (this.observeribtyCallback !== undefined) {
                         Reflect.defineProperty(this, key, {
                             set(next) {
@@ -44,7 +43,6 @@ function useObservedObject(m) {
     const [___s, set___s] = (0, react_1.useState)("");
     (0, react_2.useEffect)(() => {
         if (m.observeribtyCallback === undefined) {
-            console.log("is comming herere");
             m.observeribtyCallback = (key, prev, next) => {
                 set___s((0, uuid_1.v4)());
             };
