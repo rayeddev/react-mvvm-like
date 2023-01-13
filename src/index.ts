@@ -19,12 +19,17 @@ export class ObservableObject {
       let instance: { [publishedKey: string]: any } = this as {};
       if (instance[publishedKey] !== undefined) {
         (instance[publishedKey] as onPropChangedHook)((key) => {
-          let currentValue = instance[key];          
-          if (this.observeribtyCallback !== undefined) {
+          let currentValue = instance[key];
+          if (
+            this.observabilityCallbacks &&
+            Object.keys(this.observabilityCallbacks).length !== 0
+          ) {
             Reflect.defineProperty(this, key, {
               set(next) {
                 currentValue = next;
-                this.observeribtyCallback(key, next, instance[key]);
+                Object.keys(this.observabilityCallbacks).forEach((k) => {
+                  this.observabilityCallbacks[k](key, next, instance[key]);
+                });
               },
               get() {
                 return currentValue;
@@ -35,19 +40,46 @@ export class ObservableObject {
       }
     }
   }
-  public observeribtyCallback?: (key: string, prev: any, next: any) => void;
+  private observabilityCallbacks?: {
+    [key: string]: (key: string, prev: any, next: any) => void;
+  };
+
+  public addObservabilityCallback(
+    cb: (key: string, prev: any, next: any) => void,
+    callback: () => void
+  ): string {
+    let uuid = uuidv4();
+    this.observabilityCallbacks = { ...this.observabilityCallbacks, uuid: cb };
+    callback();
+    return uuid;
+  }
+
+  public unsetObservabilityCallback(uuid: string) {
+    if (
+      this.observabilityCallbacks &&
+      this.observabilityCallbacks[uuid] !== undefined
+    ) {
+      delete this.observabilityCallbacks[uuid];
+    }
+  }
 }
 
 export function useObservedObject<T extends ObservableObject>(m: T): T {
   const [___s, set___s] = useState("");
 
   useEffect(() => {
-    if (m.observeribtyCallback === undefined) {      
-      m.observeribtyCallback = (key: string, prev: any, next: any) => {
+    let id = m.addObservabilityCallback(
+      (key: string, prev: any, next: any) => {
         set___s(uuidv4());
-      };
-      m.observe();
-    }
+      },
+      () => {
+        m.observe();
+      }
+    );
+
+    return () => {
+      m.unsetObservabilityCallback(id);
+    };
   }, []);
 
   return m;
