@@ -1,17 +1,16 @@
 import { Published, ObservableObject } from "react-mvvm-like";
 import { v4 as uuidv4 } from "uuid";
-const tasksOverdue: number = 10;
+const tasksAutoDoneDefaultSpan: number = 10;
 export type Task = {
   id: string;
   title: string;
   done: boolean;
-  overdue: number; // seconds
+  autoDoneAfter: number; // seconds
   interval: number;
 };
 
 export class TodoViewModel extends ObservableObject {
   @Published tasks: Task[] = [];
-  @Published interval: number = 0;
   interfvalRef?: NodeJS.Timer;
 
   async fetch() {
@@ -20,14 +19,14 @@ export class TodoViewModel extends ObservableObject {
         id: uuidv4(),
         title: "push recent updates",
         done: true,
-        overdue: tasksOverdue,
+        autoDoneAfter: tasksAutoDoneDefaultSpan,
         interval: 0
       },
       {
         id: uuidv4(),
         title: "code review 1",
         done: false,
-        overdue: tasksOverdue,
+        autoDoneAfter: tasksAutoDoneDefaultSpan,
         interval: 0
       }
     ];
@@ -43,7 +42,7 @@ export class TodoViewModel extends ObservableObject {
     } else {
       this.interfvalRef = setInterval(() => {
         this.tasks = this.tasks.map((t) => {
-          if (t.interval < t.overdue) {
+          if (t.interval < t.autoDoneAfter) {
             t.interval++;
           } else {
             t.done = true;
@@ -63,7 +62,7 @@ export class TodoViewModel extends ObservableObject {
       id: uuidv4(),
       title: title,
       done: done,
-      overdue: tasksOverdue,
+      autoDoneAfter: tasksAutoDoneDefaultSpan,
       interval: 0
     });
     this.tasks = [...this.tasks];
