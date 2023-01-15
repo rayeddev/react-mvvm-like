@@ -16,8 +16,10 @@ npm install react-mvvm-like
 ```
 
 ____
+## [Live Example](https://codesandbox.io/s/react-mvvm-experiment-5w10dk)
 
-## Example
+
+## Implementation 
 ### Model
 ```ts
 // Model
