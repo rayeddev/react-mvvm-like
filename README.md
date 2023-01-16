@@ -1,5 +1,5 @@
 # react-mvvm-like
-support applying MVVM using reactjs inspired by SwiftUI
+MVVM support for React inspired by Apple SwiftUI
 
 ## Install 
 ```bash
